@@ -102,14 +102,16 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
-        nTargetTimespan = 2 * 60; 
-        nTargetSpacing = 2 * 60;  // Northern: 2 minute blocks during POW (block 1-200)
+        // nTargetTimespan = 2 * 60; 
+        // nTargetSpacing = 2 * 60;  // Northern: 2 minute blocks during POW (block 1-200)
+        nTargetTimespan = 1 * 60; 
+        nTargetSpacing = 1 * 60;  // Northern: 1 minute blocks during POW (block 1-200)
         nMaturity = 5; // 6 block maturity (+1 elsewhere)
         nMasternodeCountDrift = 20;
         // nMaxMoneyOut = 5000000 * COIN; // 5 million max supply
-        nMaxMoneyOut = 5000000000 * COIN; // 5 billion max supply
+        nMaxMoneyOut = 7500000000 * COIN; // 7.5 billion max supply
         //nLastPOWBlock = 200;
-        nLastPOWBlock = 150;
+        nLastPOWBlock = 200;
         nModifierUpdateBlock = 1; // we use the version 2 for NORT
 
         const char* pszTimestamp = "Bitcoin now uses as much energy as Ireland - businessgreen 21/05/2018";
@@ -117,7 +119,8 @@ public:
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 0 * COIN;
+        //txNew.vout[0].nValue = 0 * COIN;
+        txNew.vout[0].nValue = 4349999990 * COIN; // setup premine amount
         txNew.vout[0].scriptPubKey = CScript() << ParseHex("04f5a8143f86ad8ac63791fbbdb8e0b91a8da88c8c693a95f6c2c13c063ea790f7960b8025a9047a7bc671d5cfe707a2dd2e13b86182e1064a0eea7bf863636363") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
