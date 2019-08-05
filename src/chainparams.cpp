@@ -108,7 +108,7 @@ public:
         nMasternodeCountDrift = 20;
         nMaxMoneyOut = 5000000 * COIN; // 5 million max supply
         //nLastPOWBlock = 200;
-        nLastPOWBlock = 100;
+        nLastPOWBlock = 150;
         nModifierUpdateBlock = 1; // we use the version 2 for NORT
 
         const char* pszTimestamp = "Bitcoin now uses as much energy as Ireland - businessgreen 21/05/2018";
