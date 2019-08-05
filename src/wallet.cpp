@@ -1978,6 +1978,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     }
 
     //Masternode payment
+    LogPrintf("[CreateCoinStake] Do payment for masternode\n");
     FillBlockPayee(txNew, nMinFee, true);
 
     // Sign

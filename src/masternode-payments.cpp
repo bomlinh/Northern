@@ -282,11 +282,13 @@ std::string GetRequiredPaymentsString(int nBlockHeight)
 
 void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFees, bool fProofOfStake)
 {
+    LogPrint("CMasternodePayments::FillBlockPayee", "Enter function...");
     CBlockIndex* pindexPrev = chainActive.Tip();
     if (!pindexPrev) return;
 
     bool hasPayment = true;
     CScript payee;
+    LogPrint("CMasternodePayments::FillBlockPayee", "pindexPrev != null");
 
     //spork
     if (!masternodePayments.GetBlockPayee(pindexPrev->nHeight + 1, payee)) {
@@ -310,6 +312,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
              * use vout.size() to align with several different cases.
              * An additional output is appended as the masternode payment
              */
+            LogPrint("Do payment for POS...")
             unsigned int i = txNew.vout.size();
             txNew.vout.resize(i + 1);
             txNew.vout[i].scriptPubKey = payee;
@@ -318,6 +321,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
             //subtract mn payment from the stake reward
             txNew.vout[i - 1].nValue -= masternodePayment;
         } else {
+            LogPrint("Do payment for POW...")
             txNew.vout.resize(2);
             txNew.vout[1].scriptPubKey = payee;
             txNew.vout[1].nValue = masternodePayment;
