@@ -312,7 +312,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
              * use vout.size() to align with several different cases.
              * An additional output is appended as the masternode payment
              */
-            LogPrint("masternode", "Do payment for POS...")
+            LogPrint("masternode", "Do payment for POS...");
             unsigned int i = txNew.vout.size();
             txNew.vout.resize(i + 1);
             txNew.vout[i].scriptPubKey = payee;
@@ -321,7 +321,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
             //subtract mn payment from the stake reward
             txNew.vout[i - 1].nValue -= masternodePayment;
         } else {
-            LogPrint("masternode", "Do payment for POW...")
+            LogPrint("masternode", "Do payment for POW...");
             txNew.vout.resize(2);
             txNew.vout[1].scriptPubKey = payee;
             txNew.vout[1].nValue = masternodePayment;
