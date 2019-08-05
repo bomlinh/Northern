@@ -18,8 +18,8 @@ Furthermore, as result of offering multiple ways for users to mint new NORT coin
 #### Algorithm: - *Quark-hash* 
 #### Masternode collateral - *2,500 NORT*  
 #### Features: - *SwiftTX, budget, treausury and masternode governance is enabled* 
-#### RPC Port: - *9332* 
-#### P2P Port: - *6942* 
+#### RPC Port: - *7789* 
+#### P2P Port: - *7788* 
 
 #
 
